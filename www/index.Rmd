@@ -1,0 +1,23 @@
+---
+title: "The Interest Calculator App"
+author: "Roozbeh Davari"
+output: html_document
+---
+
+The free and easy-to-use Interest Calculator App can help you gain insight into your preferred monthly payment plan. 
+
+You can run this application for free on any web browser. Simply provide the Interest Calculator App with your credit card balance, the credit card annual percentage rate (APR), and your anticipated monthly payment.
+
+The application will calculate the number of payments you will need to make and the total interest amount that you have to pay. It also shows the cumulative interest for each month so you can get an picture of true cost of that payment plan.
+
+Furthermore, the application alerts you if your payment amount is too low to be able to pay off your account balance. Subsequently, it will calculate the minimum payment you need to make. 
+
+This app assumes that you are already in the middle of making payments and therefore you are paying interest each month.
+It also assumes that your account APR doesn't change.
+
+This code has been written in R using the [Shiny App](http://shiny.rstudio.com/) which is 
+a powerful web application framework for R.
+
+The ui.R and server.R for this application can be find in this [repository on github]().
+
+

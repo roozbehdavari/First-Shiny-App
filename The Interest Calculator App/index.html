@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The Interest Calculator App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="The Interest Calculator App">
+  <meta name="author" content="Roozbeh Davari">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>The Interest Calculator App</h1>
+    <h2>Finding The Optimum Credit Card Payment Plan</h2>
+    <p>Roozbeh Davari<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Motivation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>When we receive our monthly credit card statement, there’s a temptation to pay only the minimum amount. By doing so, we can lose hundreds, sometimes thousands of dollars in interest to credit card companies.  This can easily be avoided by executing a more thoughtful payment plan.</p>
+
+<p>The free and easy-to-use Interest Calculator app can help you gain insight into your optimal monthly payment plan.  In this short presentation, we will demonstrate how this app can help you find the optimum credit card payment plan.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The Interest Calculator App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You can run this application for free on any web browser. Simply provide the Interest Calculator App with your credit card balance, the credit card annual percentage rate (APR), and your anticipated monthly payment.</p>
+
+<p>The application will calculate the number of payments you will need to make and the total interest amount that you have to pay. It also shows the cumulative interest for each month so you can get an picture of true cost of that payment plan.</p>
+
+<p>Furthermore, the application alerts you if your payment amount is too low to be able to pay off your account balance. Subsequently, it will calculate the minimum payment you need to make. Feel free to try making $1 monthly payments!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The Interest Calculator App Main Code</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">total.interest &lt;- function(balance,APR,pay) 
+{interest &lt;- 0; interests &lt;- c()
+  apr.monthly &lt;- (APR / 12) * 0.01
+  while (balance &gt; 0) {
+    interest &lt;- balance*apr.monthly + interest
+    interests &lt;- append(interests,interest)
+    balance &lt;- balance + balance*apr.monthly - pay}
+interests
+}
+
+paste(&#39;Total Interest: $&#39;,
+round(max(total.interest(balance=5000,APR=14,pay=250)),2))
+</code></pre>
+
+<pre><code>## [1] &quot;Total Interest: $ 726.91&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>The Interest Calculator App Demonstration</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">interest &lt;- total.interest(balance=5000,APR=14,pay=250)
+plot(interest,ylab=&#39;Total Interest ($)&#39;,xlab=&#39;Number of Payement Made&#39;, 
+main = &#39;Cumulative Interest over Months&#39; , col=&#39;blue&#39;,cex.lab=1.5)
+text(length(interest)/2,max(interest),adj = c(.5,1), 
+paste(&#39;Required Number of Payements:&#39;,length(interest)))
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="600" height="350" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Motivation'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The Interest Calculator App'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The Interest Calculator App Main Code'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='The Interest Calculator App Demonstration'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
