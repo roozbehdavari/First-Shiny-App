@@ -1,4 +1,4 @@
-First-Shiny-App
+Interest Calculator Shiny App
 ===============
 
 Shiny App
